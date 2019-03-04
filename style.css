@@ -1,0 +1,665 @@
+/*=========================
+Declare variables for page
+==========================*/
+:root {
+  --yellow: #F9A825;
+  --orange: #E65100;
+  --red: #C62828;
+  --lGreen: #4CAF50;
+  --dGreen: #1B5E20;
+  --lBlue: #0277BD;
+  --dBlue: #283593;
+  --cyan: #00E5FF;
+  --lPurple: #7C4DFF;
+  --dPurple: #512DA8;
+  --dGrey: #455A64;
+  --lGrey:  #78909C;
+  --silver: #E0E0E0;  
+}
+
+/*=====================
+Basic Styles and Layout
+======================*/
+
+/*Global styles*/
+html {
+  margin: 0;
+  padding: 0; 
+  background: linear-gradient(black,white);
+  scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+/*layout styling*/
+.container {
+  display: grid;
+  grid-column: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'header header header quote'
+    'header header header quote'
+    'title title title title'
+    'timeline timeline article article'
+    'discworld discworld discworld discworld'
+    'links links links links'
+    'footer footer footer footer';
+  grid-gap: 10px;
+  margin: 0 auto;
+}
+
+.top {
+  grid-area: header;
+  border: solid 10px var(--dBlue);
+  background: black;
+}
+
+.top-quote {
+  grid-area: quote;
+  margin: 5px auto;
+  display: flex;
+}
+
+.top-title {
+  grid-area: title;
+  text-align: center;
+}
+
+article {
+  grid-area: article;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.timeline-box {
+  grid-area: timeline;
+  border: solid 10px var(--orange);
+}
+
+.discworld-box {
+  grid-area: discworld;
+  border: solid 10px;
+}
+
+.links {
+  grid-area: links;
+  background-color: var(--orange);
+}
+
+footer {
+  grid-area: footer;
+}
+
+/*==============================
+header, title , image
+===============================*/
+
+header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+p, li {
+  font-family: 'Source Sans Pro', Verdana, sans-serif;
+  font-size: 1.5em;
+}
+
+figcaption {
+  font-family: 'Source Sans Pro', Verdana, sans-serif;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+h3 {
+  font-family: 'Chewy', Georgia, cursive;
+  font-size: 2em;
+  text-align: center;
+}
+
+.top-img {
+  position: relative;
+  background: black;
+  height: 100%;
+}
+
+.top-img figure {
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  
+#image{
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  border: solid 5px white;
+}
+
+/*in case of image not found*/
+#image:after {
+display: inherit;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+padding: 5px;
+border: 1px dashed var(--dGreen);
+background-color: var(--silver);
+z-index: 1;
+font-family: verdana;
+font-size: 0.8em;
+content: "" attr(alt) " was not found";
+}
+
+
+figcaption {
+  text-align: center;
+  width: 100%;
+  background-color: white;
+  border: solid 5px white;
+}
+
+.top-title {
+  width: 100%;
+  background: var(--dPurple);
+  border: solid 10px;
+}
+
+h1 {
+  font-family: 'Spicy Rice', Georgia, fantasy;
+  font-size: 3.5em;
+}
+
+blockquote {
+  font-family: 'Chewy', cursive;
+  font-size: 1.8em;
+  color: white;
+  padding: 30px;
+  margin: auto 20px;
+  border: solid 10px var(--red);
+  text-align: center;
+}
+
+/*==================================
+articles - timeline, info, booklist
+====================================*/
+article {
+  width: 100%;
+  padding: 0 20px;
+}
+
+article p {
+  padding: 10px 25px;
+  text-align: center;
+  background-color: var(--silver);
+}
+
+article p:nth-child(1) {
+  border: solid 10px var(--cyan);
+}
+
+article p:nth-child(2) {
+  border: solid 10px var(--yellow);
+  margin: 15px 30px 0 30px;
+}
+
+article p:nth-child(3) {
+  border: solid 10px var(--lPurple);
+  margin: 15px 60px 0 60px;
+}
+
+article p:nth-child(4) {
+  border: solid 10px var(--lBlue);
+  margin: 15px 90px 0 90px;
+}
+
+article p:nth-child(5) {
+  border: solid 10px var(--dGreen);
+  margin: 15px 120px 0 120px;
+}
+
+article p:nth-child(6) {
+  border: solid 10px var(--dBlue);
+  margin: 15px 150px 0 150px;
+}
+
+.timeline-box {
+  background-color: var(--silver);
+  width: 100%;
+  max-height: 1000px;
+  overflow: auto;
+  padding: 10px;
+}
+
+.timeline-box ul {
+  padding: 0;
+  margin: 0;
+}
+
+.timeline {
+  list-style: none;
+}
+
+.timeline li {
+  margin: 15px 5px;
+}
+
+.year {
+  width: 20%;
+  float: left;
+  padding: 5px;
+  clear: both;
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;  
+  border-top: dotted 3px var(--dGrey);
+  border-left: dotted 3px var(--dGrey);
+}
+
+.tl_content {
+  width: 75%;
+  padding-right: 5px;
+  text-align: right;
+  float: right; 
+  clear: both;
+  border-bottom: dotted 3px var(--lGrey);
+  border-right: dotted 3px var(--lGrey);
+}
+
+.discworld-box {
+  padding: 10px;
+}
+
+.discworld-box h3 {
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+}
+
+.discworld {
+  margin-top: 0;
+  padding-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.book {
+  flex: 1 1 300px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.book-title{
+  padding: 10px;
+  margin: 15px;
+  border: dotted 2px black;
+}
+
+/*different background colors based on common character, c-disc to be used for all once-off stories....a little nod to true TP fans who notice this*/
+.c-disc {
+  background-color: var(--lBlue);
+  background-color: blue;
+}
+
+.c-wizard {
+  background-color: var(--dGreen);
+  background-color: green;
+}
+
+.c-witch {
+  background-color: var(--lPurple);
+   background-color: purple;
+}
+
+.c-watch {
+  background-color: var(--orange);
+  background-color: orange;
+}
+
+.c-death {
+  background-color: var(--lGrey);
+  background-color: grey;
+}
+
+/*book description will appear over book title on hover */
+.book-info {
+  display: none;
+}
+
+.book:hover .book-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin:  5px auto;
+  padding: 0 5px;
+  font-size: 0.8em;
+  background-color: var(--lGrey);
+  border: dotted 2px black;
+  cursor: pointer;
+  z-index: 20;
+}
+
+/*flashing indicator on first book only to hint that there is hidden content*/
+.discworld .book:nth-child(1) .book-title::before {
+  position: absolute;
+  content: '';
+  width: 50%;
+  height: 5px;
+  border-radius: 50%;
+  top: 15%;
+  left: 25%;
+  background-color: black;
+  z-index: 10;
+  animation: flashdot 2s infinite ease;
+  -webkit-animation: flashdot 2s infinite ease;
+}
+
+@keyframes flashdot{
+  0% {
+    background-color: black;
+  }
+  50% {
+    background-color: var(--dGreen);
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+@-webkit-keyframes flashdot{
+  0% {
+    background-color: black;
+  }
+  50% {
+    background-color: var(--dGreen);
+  }
+  100% {
+    background-color: black;
+  }
+}
+/*=====================
+links section
+======================*/
+.links {
+  text-align: center;
+  line-height: 1.4em;
+}
+
+.links p {
+  padding: 5px;
+  margin: 0;
+}
+
+/*style hover states of link*/
+.links a {
+  color: black;
+}
+ 
+.links a:visited {
+  color: var(--dGreen);
+}
+ 
+.links a:focus {
+  color: var(--dBlue);
+}
+ 
+.links a:hover {
+  color: var(--dBlue);
+}
+ 
+.links a:active {
+  color: var(--dPurple);
+}
+
+/*======
+footer
+=======*/
+footer {
+  position: relative;
+}
+
+footer p {
+  padding-top: 0;
+  margin-top: 0;
+  font-size: 1em;
+  text-align: center;
+  line-height: 2em;
+  background-color: var(--dGreen);
+  color: var(--silver);
+}
+
+  /*back to top*/
+  .backtotop {
+    font-size: 1.8em;
+    position: relative;
+    padding: 1px;
+    margin: auto;
+    float: right;
+    clear: both;
+}
+
+.toplink {
+  color: black;
+  padding: 2px;
+}
+
+.toplink:hover {
+  opacity: 0.5; 
+}
+/*========================================
+Media Queries for responsiveness
+- all content in one column
+=========================================*/
+@media screen and (max-width:768px) {
+  .container {
+    padding: 0;
+    background-color: black;
+    display: grid;
+    grid-column: 1fr;
+    grid-gap: 5px;
+    grid-template-areas:
+    'title'
+    'header'
+    'quote'
+    'article'
+    'timeline'
+    'discworld'
+    'links'
+    'footer';
+  }
+  
+  .top, .top-img, .top-title, .top-quote, blockquote, #tribute-info, #tribute-info *, .timeline-box, .timeline, .discworld, .discworld-box *, .link, footer p {
+    margin: 0 auto; 
+  } 
+  
+  article {
+    padding: 0;
+  }
+  
+  .top-title {
+    border: solid 10px var(--dPurple);
+  }
+  
+  .discworld-box {
+    border: solid 10px var(--dBlue);
+  }
+  
+  /*larger font for mobile view*/
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h3, blockquote, .year{
+    font-size: 1.6rem;
+  }
+  
+  p, li {
+    font-size: 1.4rem;
+  }
+  
+  .link p {
+    color: white;
+    font-size: 1.2rem;
+  }
+  
+    .timeline-box {
+    display: flex;
+    overflow-y: scroll;
+    max-height: 350px;
+  }
+  
+  h3 {
+    color: black;
+  }
+
+  .discworld-box {
+    background-color: var(--silver);
+    overflow-y: scroll;
+    max-height: 350px;
+  }
+  
+  .book {
+    color: white;
+    margin: 5px;
+  }
+ 
+  .book-info p {
+     font-size: 1rem;
+  }
+    
+}
+
+/*================
+Media Queries for 
+print
+=================*/
+
+@media print {
+  /*Hide unwanted print elements*/
+  .top-img, #tribute-link i, footer p{
+    display: none;
+  }
+  
+  /*Global reset*/
+  .container {
+    font-family: Georgia, serif;
+    font-size: 14pt;
+    line-height: 20pt;
+    background: none;
+    color: #000;
+    display: grid;
+    grid-column: 1fr;
+    grid-template-areas:
+    'title'
+    'quote'
+    'article'
+    'timeline'
+    'discworld'
+    'link'
+    'footer';
+  }
+  
+  /*Layout reset*/
+.container * {
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  }
+  
+  .top-title {
+    margin-top: 30pt;
+  }
+  
+  #tribute-info p {
+  border: none;
+  margin: 0;
+  padding: 5pt;
+  text-align: left;
+  }
+  
+  /*Specifics*/
+  p, li, h1, h3, blockquote, .year {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-align: left;
+  } 
+  
+  #tribute-info p::before {
+    content:'- ';
+  }
+  
+  .timeline-box {
+    max-height: 100%;
+    overflow: visible;
+  }
+  
+  .timeline {
+    padding: 5px;
+  }
+  
+  .timeline::before {
+    content: 'The Life and Times of Terry Pratchett';
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-align: center;
+  }
+  
+  .timeline .year {
+    clear: none;
+    width: 15%;
+  }
+  
+  .timeline .tl_content {
+    clear: none;
+    width: 85%;
+  }
+ 
+  .discworld {
+    display: grid; 
+    grid-gap: 5px;
+  }
+  
+  .book-title {
+    font-style: italic;
+  }
+  
+  .book-info {
+    display: inherit;
+  }
+  
+  a:link {
+       margin: 0;
+  }
+
+  a::after {
+     content: " [" attr(href) "]";
+  }
+
+  .link a:link,
+  .link a:visited {
+    color: #000;
+    background: none;
+    padding: 0;
+   }
+}
